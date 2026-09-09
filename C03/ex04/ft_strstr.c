@@ -1,0 +1,26 @@
+#include <stddef.h> // Para ter acesso ao NULL
+
+char    *ft_strstr(char *str, char *to_find)
+{
+    int     i;
+    int     j;
+
+    // Regra de outro 1: Se a busca for uma str vazia, retorna a principal
+    if (to_find[0] == '\0')
+            return (str);
+    i = 0;
+    while (str[i] != '\0')
+    {
+            j = 0;
+            // Compara a partir da posição 'i' enquanto as letras se baterem
+            while (str[i + j] != '\0' && str[i + j] == to_find[j])
+            {
+                j++;
+                //Se 'j' chegou ao fim de 'to_find', achamos a palavra inteira
+                if (to_find[j] == '\0')
+                        return (&str[i]);
+            }
+            i++;
+    } 
+    return (NULL);
+}

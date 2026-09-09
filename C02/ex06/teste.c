@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+// Dizemos ao compilador que a sua função existe em outro arquivo
+int	ft_str_is_printable(char *str);
+
+int	main(void)
+{
+	int erros = 0;
+
+	// Teste 1: Apenas minusculas (Deve retornar 1)
+	if (ft_str_is_printable("ABCDEF") != 1)
+	{
+		printf("[FALHA] 'ABCDEF' deveria retornar 1\n");
+		erros++;
+	}
+
+	// Teste 2: Misturado com numeros (Deve retornar 0)
+	if (ft_str_is_printable("42piscine\n") != 0)
+	{
+		printf("[FALHA] '42piscine\n' deveria retornar 0\n");
+		erros++;
+	}
+
+	// Teste 3: String vazia (Regra do PDF: Deve retornar 1)
+	if (ft_str_is_printable("") != 1)
+	{
+		printf("[FALHA] String vazia '' deveria retornar 1\n");
+		erros++;
+	}
+
+	// Teste 4: Sinais ou espaços (Deve retornar 1)
+	if (ft_str_is_printable("123 45") != 1)
+	{
+		printf("[FALHA] '123 45' com espaço deveria retornar 1\n");
+		erros++;
+	}
+
+	// Veredito Final do seu teste unitário
+	if (erros == 0)
+		printf("\033[0;32m[SUCESSO] Código perfeito! Todos os testes passaram.\033[0m\n");
+	else
+		printf("\033[0;31m[ERRO] Foram encontradas %d falhas nos testes.\033[0m\n", erros);
+
+	return (erros);
+}
